@@ -42,7 +42,7 @@ public class GuestbookControllerIntegrationTests {
 	@Test // #58
 	void redirectsToLoginPageForSecuredResource() throws Exception {
 
-		SlaybookEntry entry = repository.findAll().iterator().next();
+		GuestbookEntry entry = repository.findAll().iterator().next();
 
 		mvc.perform(delete("/guestbook/{id}", entry.getId())) //
 				.andExpect(status().is3xxRedirection()) //
@@ -54,7 +54,7 @@ public class GuestbookControllerIntegrationTests {
 	void returnsModelAndViewForSecuredUriAfterAuthentication() throws Exception {
 
 		long numberOfEntries = repository.count();
-		SlaybookEntry entry = repository.findAll().iterator().next();
+		GuestbookEntry entry = repository.findAll().iterator().next();
 
 		mvc.perform(delete("/guestbook/{id}", entry.getId())) //
 				.andExpect(status().is3xxRedirection()) //

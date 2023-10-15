@@ -32,7 +32,7 @@ import org.springframework.util.Assert;
  * @see https://en.wikipedia.org/wiki/Domain-driven_design#Building_blocks
  */
 @Entity
-class SlaybookEntry {
+class GuestbookEntry {
 
 	private @Id @GeneratedValue Long id;
 	@NotNull
@@ -40,12 +40,12 @@ class SlaybookEntry {
 	private final LocalDateTime date;
 
 	/**
-	 * Creates a new {@link SlaybookEntry} for the given name and text.
+	 * Creates a new {@link GuestbookEntry} for the given name and text.
 	 *
 	 * @param name must not be {@literal null} or empty
 	 * @param text must not be {@literal null} or empty
 	 */
-	public SlaybookEntry(String name, String email, String text) {
+	public GuestbookEntry(String name, String email, String text) {
 
 		Assert.hasText(name, "Name must not be null or empty!");
 		Assert.hasText(text, "Text must not be null or empty!");
@@ -62,15 +62,15 @@ class SlaybookEntry {
 		this.date = LocalDateTime.now();
 	}
 
-	public SlaybookEntry(String name, String text) {
-		SlaybookEntry entry = new SlaybookEntry(name, "", text);
+	public GuestbookEntry(String name, String text) {
+		GuestbookEntry entry = new GuestbookEntry(name, "", text);
 		this.name = entry.getName();
 		this.email = entry.getEmail();
 		this.text = entry.getText();
 		this.date = entry.date;
 	}
 
-	public SlaybookEntry() {
+	public GuestbookEntry() {
 		this.name = null;
 		this.email = null;
 		this.text = null;

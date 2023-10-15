@@ -39,7 +39,7 @@ class GuestbookControllerUnitTests {
 	@Test
 	void populatesModelForGuestbook() {
 
-		SlaybookEntry entry = new SlaybookEntry("Yoda", "master.yoda@jedis.org" ,"May the 4th b with you!");
+		GuestbookEntry entry = new GuestbookEntry("Yoda", "master.yoda@jedis.org" ,"May the 4th b with you!");
 		doReturn(Streamable.of(entry)).when(guestbook).findAll();
 
 		Model model = new ExtendedModelMap();

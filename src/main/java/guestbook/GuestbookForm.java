@@ -18,7 +18,7 @@ package guestbook;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * Type to bind request payloads and make them available in the controller. In contrast to {@link SlaybookEntry} it is
+ * Type to bind request payloads and make them available in the controller. In contrast to {@link GuestbookEntry} it is
  * particularly designed to also be able to capture invalid input, so that the raw form data can be bound and validated
  * against business constraints using code and / or annotations.
  * <p>
@@ -76,12 +76,12 @@ class GuestbookForm {
 		return email;
 	}
 	/**
-	 * Returns a new {@link SlaybookEntry} using the data submitted in the request.
+	 * Returns a new {@link GuestbookEntry} using the data submitted in the request.
 	 *
-	 * @return the newly created {@link SlaybookEntry}
+	 * @return the newly created {@link GuestbookEntry}
 	 * @throws IllegalArgumentException if you call this on an instance without the name and text actually set.
 	 */
-	SlaybookEntry toNewEntry() {
-		return new SlaybookEntry(getName(), getEmail(), getText());
+	GuestbookEntry toNewEntry() {
+		return new GuestbookEntry(getName(), getEmail(), getText());
 	}
 }

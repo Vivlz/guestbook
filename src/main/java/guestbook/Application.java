@@ -50,7 +50,7 @@ public class Application {
 	}
 
 	/**
-	 * Some initializing code to populate our database with some {@link SlaybookEntry}s. Beans of type
+	 * Some initializing code to populate our database with some {@link GuestbookEntry}s. Beans of type
 	 * {@link CommandLineRunner} will be executed on application startup which makes them a convenient way to run
 	 * initialization code.
 	 */
@@ -60,11 +60,11 @@ public class Application {
 		return args -> {
 
 			Stream.of( //
-					new SlaybookEntry("H4xx0r", "test@domain.com","first!!!"), //
-					new SlaybookEntry("Arni", "", "Hasta la vista, baby"), //
-					new SlaybookEntry("Duke Nukem",
+					new GuestbookEntry("H4xx0r", "test@domain.com","first!!!"), //
+					new GuestbookEntry("Arni", "", "Hasta la vista, baby"), //
+					new GuestbookEntry("Duke Nukem",
 							"It's time to kick ass and chew bubble gum. And I'm all out of gum."), //
-					new SlaybookEntry("Gump1337",
+					new GuestbookEntry("Gump1337",
 							"Mama always said life was like a box of chocolates. You never know what you're gonna get.")) //
 					.forEach(guestbook::save);
 		};
