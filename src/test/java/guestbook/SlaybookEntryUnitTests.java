@@ -20,28 +20,28 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for {@link GuestbookEntry}.
+ * Unit tests for {@link SlaybookEntry}.
  *
  * @author Oliver Drotbohm
  */
-class GuestbookEntryUnitTests {
+class SlaybookEntryUnitTests {
 
 	@Test
 	void rejectsEmptyName() {
 
 		assertThatExceptionOfType(IllegalArgumentException.class)//
-				.isThrownBy(() -> new GuestbookEntry("", "May the 4th be with you!"));
+				.isThrownBy(() -> new SlaybookEntry("", "May the 4th be with you!"));
 	}
 
 	@Test
 	void rejectsEmptyText() {
 
 		assertThatExceptionOfType(IllegalArgumentException.class)//
-				.isThrownBy(() -> new GuestbookEntry("Ollie", ""));
+				.isThrownBy(() -> new SlaybookEntry("Ollie", ""));
 	}
 
 	@Test
 	void setsCreationDate() {
-		assertThat(new GuestbookEntry("Ollie", "May the 4th be with you!").getDate()).isNotNull();
+		assertThat(new SlaybookEntry("Ollie", "May the 4th be with you!").getDate()).isNotNull();
 	}
 }

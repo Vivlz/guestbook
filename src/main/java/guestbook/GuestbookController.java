@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * A controller to handle web requests to manage {@link GuestbookEntry}s
+ * A controller to handle web requests to manage {@link SlaybookEntry}s
  *
  * @author Paul Henke
  * @author Oliver Drotbohm
@@ -69,7 +69,7 @@ class GuestbookController {
 	}
 
 	/**
-	 * Handles requests to access the guestbook. Obtains all currently available {@link GuestbookEntry}s and puts them
+	 * Handles requests to access the guestbook. Obtains all currently available {@link SlaybookEntry}s and puts them
 	 * into the {@link Model} that's used to render the view.
 	 *
 	 * @param model the model that's used to render the view
@@ -86,7 +86,7 @@ class GuestbookController {
 	}
 
 	/**
-	 * Handles requests to create a new {@link GuestbookEntry}. Spring MVC automatically validates and binds the HTML form
+	 * Handles requests to create a new {@link SlaybookEntry}. Spring MVC automatically validates and binds the HTML form
 	 * to the {@code form} parameter. Validation or binding errors, if any, are exposed via the {@code
 	 * errors} parameter.
 	 *
@@ -108,17 +108,17 @@ class GuestbookController {
 	}
 
 	/**
-	 * Deletes a {@link GuestbookEntry}. This request can only be performed by authenticated users with admin privileges.
+	 * Deletes a {@link SlaybookEntry}. This request can only be performed by authenticated users with admin privileges.
 	 * Also note how the path variable used in the {@link DeleteMapping} annotation is bound to an {@link Optional}
 	 * parameter of the controller method using the {@link PathVariable} annotation. If the entry couldn't be found, that
 	 * {@link Optional} will be empty.
 	 *
-	 * @param entry an {@link Optional} with the {@link GuestbookEntry} to delete
+	 * @param entry an {@link Optional} with the {@link SlaybookEntry} to delete
 	 * @return a redirect string
 	 */
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping(path = "/guestbook/{entry}")
-	String removeEntry(@PathVariable Optional<GuestbookEntry> entry) {
+	String removeEntry(@PathVariable Optional<SlaybookEntry> entry) {
 
 		return entry.map(it -> {
 
@@ -131,7 +131,7 @@ class GuestbookController {
 	// Request methods answering HTMX requests
 
 	/**
-	 * Handles AJAX requests to create a new {@link GuestbookEntry}. Instead of rendering a complete page, this view only
+	 * Handles AJAX requests to create a new {@link SlaybookEntry}. Instead of rendering a complete page, this view only
 	 * renders and returns the HTML fragment representing the newly created entry.
 	 * <p>
 	 * Note that we do not react explicitly to a validation error: in such a case, Spring automatically returns an
@@ -155,17 +155,17 @@ class GuestbookController {
 	}
 
 	/**
-	 * Handles AJAX requests to delete {@link GuestbookEntry}s. Otherwise, this method is similar to
+	 * Handles AJAX requests to delete {@link SlaybookEntry}s. Otherwise, this method is similar to
 	 * {@link #removeEntry(Optional)}.
 	 *
-	 * @param entry an {@link Optional} with the {@link GuestbookEntry} to delete
+	 * @param entry an {@link Optional} with the {@link SlaybookEntry} to delete
 	 * @return a response entity indicating success or failure of the removal
 	 * @throws ResponseStatusException
 	 */
 	@HxRequest
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping(path = "/guestbook/{entry}")
-	HtmxResponse removeEntryHtmx(@PathVariable Optional<GuestbookEntry> entry, Model model) {
+	HtmxResponse removeEntryHtmx(@PathVariable Optional<SlaybookEntry> entry, Model model) {
 
 		return entry.map(it -> {
 

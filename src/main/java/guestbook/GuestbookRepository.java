@@ -20,20 +20,20 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.util.Streamable;
 
 /**
- * A repository to manage {@link GuestbookEntry} instances. The methods are dynamically implemented by Spring Data JPA.
+ * A repository to manage {@link SlaybookEntry} instances. The methods are dynamically implemented by Spring Data JPA.
  *
  * @author Oliver Drotbohm
  * @see https://en.wikipedia.org/wiki/Domain-driven_design#Building_blocks
  * @see https://spring.io/projects/spring-data-jpa
  */
-interface GuestbookRepository extends CrudRepository<GuestbookEntry, Long> {
+interface GuestbookRepository extends CrudRepository<SlaybookEntry, Long> {
 
 	/**
-	 * Returns all {@link GuestbookEntry}s created by the user with the given name, sorted by the given sort criteria.
+	 * Returns all {@link SlaybookEntry}s created by the user with the given name, sorted by the given sort criteria.
 	 *
 	 * @param name the name to search for
 	 * @param sort the given sorting criteria
-	 * @return all {@link GuestbookEntry}s matching the query
+	 * @return all {@link SlaybookEntry}s matching the query
 	 */
-	Streamable<GuestbookEntry> findByName(String name, Sort sort);
+	Streamable<SlaybookEntry> findByName(String name, Sort sort);
 }

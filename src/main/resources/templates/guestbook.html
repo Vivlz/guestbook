@@ -7,10 +7,10 @@
 		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css" />
 		<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" type="text/css" />
 		<link rel="stylesheet" th:href="@{/resources/css/style.css}" type="text/css" />
-		<title th:text="#{guestbook.title}">Gästebuch</title>
+		<title th:text="#{guestbook.title}">Guestbook</title>
 	</head>
 	<body>
-		<h1 class="text-center" th:text="#{guestbook.title}">Gästebuch</h1>
+		<h1 class="text-center" th:text="#{guestbook.title}">Guestbook</h1>
 
 		<div class="text-center">
 			<a sec:authorize="isAnonymous()" href="/login">Login</a>
@@ -31,6 +31,7 @@
 							</button>
 						</form>
 						<h4 th:text="${index} + '. ' + ${entry.name}" class="card-title">1. Posting</h4>
+						<p style="font-size: smaller"; th:text="${entry.email}" class="card-title"> 1. Posting </p>
 					</div>
 					<div class="card-body">
 						<blockquote class="entrytext" th:text="${entry.text}"></blockquote>
@@ -47,6 +48,11 @@
 				<label for="name" th:text="#{guestbook.form.name}">Name</label><br /> 
 				<input class="form-control" type="text" th:field="*{name}" th:errorclass="is-invalid" required="required" />
 				<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback" th:text="#{guestbook.form.name.required}">Please provide a name.</div> 
+			</div>
+			<div class="form-group">
+				<label for="email" th:text="#{guestbook.form.email}">E-Mail</label><br />
+				<input class="form-control" type="text" th:field="*{name}" th:errorclass="is-invalid"/>
+				<div th:if="${#fields.hasErrors('email')}" class="invalid-feedback" th:text="#{guestbook.form.name.required}">Please format correctly or leave empty.</div>
 			</div>
 			<div class="form-group">
 				<label for="text" th:text="#{guestbook.form.text}">Text</label><br /> 
